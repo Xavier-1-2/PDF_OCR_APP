@@ -18,18 +18,21 @@ from watchdog.events import FileSystemEventHandler
 
 _in_progress: set = set()
 _in_progress_lock = threading.Lock()
-WATCH_FOLDER = r"C:\Users\xmckoy\Downloads\Python"
 
-TESSERACT_PATH = r"C:\Users\xmckoy\Documents\tesseract.exe"
 
-os.environ["PATH"] += os.pathsep + os.path.dirname(TESSERACT_PATH)
+BASE_DIR = Path(__file__).resolve().parent
+WATCH_FOLDER = BASE_DIR / "watch_folder"
 
-pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
-POPPLER_PATH = (
-  r"C:\Users\xmckoy\Downloads\Python\Release-26.02.0-0"
-  r"\poppler-26.02.0\Library\bin"
-)
+
+TESSERACT_PATH = BASE_DIR / "tesseract" / "tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = str(TESSERACT_PATH)
+
+os.environ["PATH"] += os.pathsep + str(TESSERACT_PATH.parent)
+
+
+
+POPPLER_PATH = BASE_DIR / "poppler" / "Library" / "bin"
 
 
 
