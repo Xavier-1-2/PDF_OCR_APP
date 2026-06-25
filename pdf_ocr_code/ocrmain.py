@@ -30,7 +30,10 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import Qt, pyqtSignal, QThread
 
 # ── Config ────────────────────────────────────────────────────────────────────
-TESSERACT_PATH = r"C:\Tesseract\tesseract.exe"
+#TESSERACT_PATH = r"C:\Tesseract\tesseract.exe"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TESSERACT_PATH = os.path.join(BASE_DIR, "Tesseract", "tesseract.exe")
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
 OCR_LANG = "eng"
