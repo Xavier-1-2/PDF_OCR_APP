@@ -9,7 +9,7 @@
 No setup required. Just double-click:
 
 ```
-pdf_watcher.exe
+ocrmain.exe
 ```
 
 ---
