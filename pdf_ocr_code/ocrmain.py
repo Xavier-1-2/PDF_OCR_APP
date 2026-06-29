@@ -32,8 +32,17 @@ from PyQt5.QtCore import Qt, pyqtSignal, QThread
 # ── Config ────────────────────────────────────────────────────────────────────
 #TESSERACT_PATH = r"C:\Tesseract\tesseract.exe"
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TESSERACT_PATH = os.path.join(BASE_DIR, "Tesseract", "tesseract.exe")
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+TESSERACT_PATH = resource_path(
+    os.path.join("tesseract", "tesseract.exe")
+)
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
 OCR_LANG = "eng"
